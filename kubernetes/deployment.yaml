@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-pizza-app
+  labels:
+    app: my-pizza-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-pizza-app
+  template:
+    metadata:
+      labels:
+        app: my-pizza-app
+    spec:
+      containers:
+      - name: my-pizza-app
+        image: europe-west12-docker.pkg.dev/dats575-projects/pizza-app/my-pizza-app:1.0.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
